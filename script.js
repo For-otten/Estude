@@ -155,69 +155,6 @@ function carregarCategoria(categoria) {
 
   const listaCanais = canaisPorCategoria[categoria] || [];
 
-
-  function criarCards(lista, idiomaTitulo) {
-    if (lista.length) {
-      const tituloIdioma = document.createElement('h2');
-      tituloIdioma.innerText = idiomaTitulo;
-      categoryContent.appendChild(tituloIdioma);
-
-      lista.forEach((canal, index) => {
-        const card = document.createElement('div');
-        card.className = 'channel-card';
-        card.innerHTML = `
-          <h3>${canal.name}</h3>
-          ${canal.image ? `<img src="${canal.image}" alt="${canal.name}" class="channel-thumbnail">` : ''}
-          <p>${canal.description}</p>
-          <div class="btns">
-            <button class="btnedit">Editar</button>
-            <button class="btnedelete">Deletar</button>
-          </div>
-        `;
-
-        card.onclick = () => abrirCanal(canal.link);
-
-        card.addEventListener('mouseenter', () => { card.style.opacity = '0.5'; });
-        card.addEventListener('mouseleave', () => { card.style.opacity = '1'; });
-
-        const btnEdit = card.querySelector('.btnedit');
-        const btnDelete = card.querySelector('.btnedelete');
-
-        btnEdit.addEventListener('click', (event) => {
-          event.stopPropagation();
-          card.style.opacity = '1';
-          const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
-          editarCanal(categoria, indexNoArrayCompleto);
-        });
-
-        btnEdit.addEventListener('mouseenter', (event) => {
-          event.stopPropagation();
-          card.style.opacity = '1';
-        });
-        btnEdit.addEventListener('mouseleave', (event) => {
-          event.stopPropagation();
-          card.style.opacity = '0.5';
-        });
-
-        btnDelete.addEventListener('click', (event) => {
-            event.stopPropagation();
-            const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
-            excluirCanal(categoria, indexNoArrayCompleto);
-        });
-        btnDelete.addEventListener('mouseenter', (event) => {
-          event.stopPropagation();
-          card.style.opacity = '1';
-        });
-        btnDelete.addEventListener('mouseleave', (event) => {
-          event.stopPropagation();
-          card.style.opacity = '0.5';
-        });
-
-        categoryContent.appendChild(card);
-      });
-    }
-  }
-
 // Pegar todas as tags únicas presentes na categoria
 const tagsUnicas = [...new Set(listaCanais.map(c => c.language))];
 
