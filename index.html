@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Estude</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Menu Lateral -->
+  <div class="sidebar">
+    <ul>
+      <h2>Categorias</h2>
+      <li>Programação</li>
+      <li>Idiomas</li>
+    </ul>
+    <div class="import-export">
+      <button onclick="exportarConteudo()" class="exportImportBtn"><img src="import-export.png" class="logoBtn"><p>Salvar Conteúdo</p></button>
+    <label for="importFile" class="exportImportBtn">
+      <img src="import.png" class="logoBtn">
+      <p>Importar Conteúdo</p>
+    </label>
+    <input type="file" id="importFile" accept=".json" onchange="importarConteudo(event)" style="display:none;" />
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="content">
+    <div class="popupinsertchannel">
+      <h1>Consulta de Canais do YouTube</h1>
+      <h1>Consultar Canal do YouTube</h1>
+      <input type="text" id="channelId" placeholder="Cole o ID do canal">
+      <button onclick="buscarCanal()">Buscar</button>
+    </div>
+    <div id="result"></div>
+  <div class="container">
+    <h2 id="titulo"></h2>
+      <div id="categoryContent">
+      <!-- Aqui serão exibidos os canais de acordo com a categoria -->
+      </div>
+    </div>
+    <button onclick="prepararPopupParaNovoCanal()" id="cadastrarBtn">+ Cadastrar Novo Conteúdo</button>
+
+    <!-- Popup de Cadastro de Canal -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h2>Cadastrar Conteúdo</h2>
+    
+    <label for="newChannelName">Nome do Conteúdo:</label>
+    <input type="text" id="newChannelName" placeholder="Nome do Canal">
+    <label for="newChannelDescription">Descrição:</label>
+    <input type="text" id="newChannelDescription" placeholder="Descrição do Canal">
+    <label for="newChannelLink">Link do Conteúdo:</label>
+    <input type="url" id="newChannelLink" placeholder="Link do Canal">
+    <label for="newChannelImage">Link da Imagem:</label>
+    <input type="url" id="newChannelImage" placeholder="URL da imagem do canal">
+    <label for="newChannelLanguage">Categoria:</label>
+    <select id="newChannelLanguage">
+      <option value="Francês">Francês</option>
+      <option value="Japonês">Japonês</option>
+    </select>
+  <div id="tagField" style="display: none;">
+    <label for="newChannelTag">Tag (C#, JS, etc):</label>
+    <input type="text" id="newChannelTag" placeholder="Ex: JavaScript, C#, Gamedev">
+  </div>
+
+      <div class="popup-buttons">
+        <button onclick="salvarCanal()"><a>+</a> Adicionar Conteúdo</button>
+        <button onclick="fecharPopup()">Fechar</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

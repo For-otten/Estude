@@ -1,0 +1,313 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  color: white;
+}
+.content{
+  width: 89%;
+  background: #0D0F1A;
+  background-attachment: fixed;
+  background-size: cover;
+}
+input {
+    width: 92%;
+    background: #272626;
+    border-radius: 6px;
+    border: 1px solid #161616;
+    margin: 3% 0 7%;
+    color: white;
+    padding: 14px;
+    font-size: 10px;
+}
+
+button {
+    margin-top: 62px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+}
+.popupinsertchannel{
+    display: none;
+    position: absolute;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+background: #2c2c2c;
+    padding: 26px 73px 10px;
+    border-radius: 5px;
+    width: 23%;
+    position: relative;
+    height: 630px;
+}
+
+.popup-content button {
+    background: none;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: medium;
+    transition: 200ms;
+
+}
+.popup-content button:hover{
+    opacity: 0.6;
+    transition: 200ms;
+}
+.popup-content button:hover a{
+    transition: 200ms;
+    color: green;
+}
+.popup-buttons{
+    position: absolute;
+    width: 97%;
+    display: flex;
+    bottom: 11px;
+    right: 11px;
+    justify-content: space-between;
+}
+button {
+  margin-top: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+ul{
+    padding: 10%;
+}
+
+li{
+    width: fit-content;
+    margin-bottom: 15%;
+    padding: 9% 16%;
+    border-radius: 9px;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+li:hover{
+    cursor: pointer;
+    width: fit-content;
+    background: #2e3557;
+
+   
+ 
+}
+.sidebar h2{
+    margin-bottom: 20%;
+}
+.sidebar{
+    width: 10%;
+    height: 100vh;
+    padding: 1%;
+    display: flex;
+    background: #2A2E42;
+    background-attachment: fixed;
+    background-size: cover;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.import-export{
+    margin-bottom: 18%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 120px;
+    border-top: 1px solid white;
+    padding-top: 6%;
+}
+.exportImportBtn{
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+    background: #0D0F1A;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: space-evenly;
+    font-size: 0;
+    transition: 200ms;
+
+}
+.exportImportBtn:hover{
+    transition: 200ms;
+    font-size: small;
+}
+.logoBtn{
+    width: 25px;
+    margin-right: 2%;
+}
+
+.exportImportBtn p{
+    margin: 0;
+}
+.channels{
+    display: flex;
+}
+#categoryContent{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* responsivo */
+  gap: 3%;
+  padding: 0px 8%;
+}
+#categoryContent h2{
+      grid-column: 1 / -1;
+      text-align: start;
+}
+.container{
+  height: 91vh;
+  overflow: auto;
+}
+.channel-card{
+margin-right: 5%;
+    margin-bottom: 2%;
+    background: #1A1D2E;
+    backdrop-filter: blur(8px);
+    width: 311px;
+    height: 280px;
+    color: white;
+    position: relative;
+    opacity: 1;
+    transition: 200ms;
+}
+
+.channel-card button{
+    background: none;
+    z-index: 2;
+}
+.channel-card p{
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 36px;
+    margin-top: 16px;
+    font-size: 12px;
+    padding: 0 14%;
+}
+.channel-card h3{
+    font-size: large;
+}
+.btnedelete{
+    color: red;
+    z-index: 222;
+    border-radius: 10px;
+    border: none;
+    transition: 200ms;
+}
+.btnedelete:hover{
+    background-color: rgb(119, 22, 22);
+    color: white;
+    transition: 200ms;
+
+}
+.btnedit{
+    color: #7f8081;
+    z-index: 222;
+    border: none;
+    border-radius: 10px;
+    transition: 200ms;
+
+}
+.btnedit:hover{
+    background-color: #7f8081;
+    transition: 200ms;
+    color: #000;
+}
+.btns{
+    width: 87%;
+    position: absolute;
+    bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 7%;
+}
+.channel-card:hover{
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 200ms;
+}
+
+#cadastrarBtn{
+    display: inline-block;
+    margin-right: 5%;
+    margin-bottom: 2%;
+    background-color: #185397;
+    border-radius: 10px;
+    width: 265px;
+    border: none;
+    height: 65px;
+    color: white;
+    position: relative;
+    opacity: 1;
+    transition: 400ms;
+    box-shadow: inset 0px 0px 4px 0px black;
+    margin-left: 1.2%;
+}
+#cadastrarBtn:hover{
+    box-shadow: inset 0px 0px 15px 0px black;
+    opacity: 0.8;
+    transition: 400ms;
+}
+#titulo{
+    display: none;
+}
+.channel-thumbnail {
+    width: 281px;
+    height: 125px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 5px;
+}
+/* Estiliza a barra de rolagem */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Estiliza o trilho da barra de rolagem (área de fundo) */
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 10px;
+}
+
+/* Estiliza o "botão" (o pedaço que se move) */
+::-webkit-scrollbar-thumb {
+  background: #ff4747;
+  border-radius: 10px;
+  border: 2px solid #1e1e1e;
+}
+
+/* Ao passar o mouse sobre o botão do scroll */
+::-webkit-scrollbar-thumb:hover {
+  background: #ff6565;
+}
+select{
+    color: white;
+    cursor: pointer;
+    background: #272626;
+    padding: 7px;
+    border-radius: 6px;
+    border: 1px solid #161616;
+}
