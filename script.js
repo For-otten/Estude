@@ -153,10 +153,16 @@ function carregarCategoria(categoria) {
   categoryContent.innerHTML = '';
   cadastrarbnt.style.display = 'inline-block';
 
-  const listaCanais = canaisPorCategoria[categoria] || [];
+  // Remove itens nulos do array
+  const listaCanais = (canaisPorCategoria[categoria] || []).filter(c => c != null);
 
-// Pegar todas as tags únicas presentes na categoria
-const tagsUnicas = [...new Set(listaCanais.map(c => c.language))];
+  // Filtra somente itens com language válido e não vazio
+  const tagsUnicas = [...new Set(
+    listaCanais
+      .filter(c => c.language != null && c.language !== '')
+      .map(c => c.language)
+  )];
+
 
 
 tagsUnicas.forEach(tag => {
