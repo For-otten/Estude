@@ -111,6 +111,13 @@ li:hover{
    
  
 }
+li.active{
+    font-weight: bold;
+    font-size: 16px;
+    background: #2e3557;
+    padding: 11% 21%;
+    margin: 5%;
+}
 .sidebar h2{
     margin-bottom: 20%;
 }
