@@ -1,32 +1,5 @@
 let modoEdicao = false;
 let indexEdicao = null;
-async function buscarCanal() {
-  const channelId = document.getElementById('channelId').value;
-
-
-  if (channelId) {
-    try {
-      const response = await fetch(`/channel-info?channelId=${channelId}`);
-      const data = await response.json();
-
-      if (data.error) {
-        document.getElementById('result').innerHTML = data.error;
-      } else {
-        const channelInfo = `
-          <h3>${data.name}</h3>
-          <img src="${data.thumbnail}" alt="Thumbnail do Canal">
-          <p>${data.description}</p>
-        `;
-        document.getElementById('result').innerHTML = channelInfo;
-      }
-    } catch (error) {
-      console.error(error);
-      document.getElementById('result').innerHTML = 'Erro ao buscar informações do canal.';
-    }
-  } else {
-    alert("Por favor, cole o ID do canal.");
-  }
-}
 
 let canaisPorCategoria = {
   'Programação': [],
