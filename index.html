@@ -9,7 +9,7 @@
   <!-- Menu Lateral -->
   <div class="sidebar">
     <ul>
-      <h2>Categorias</h2>
+      <h2>Conteúdos</h2>
       <li>Programação</li>
       <li>Idiomas</li>
     </ul>
@@ -25,17 +25,10 @@
 
   <!-- Conteúdo Principal -->
   <div class="content">
-    <div class="popupinsertchannel">
-      <h1>Consulta de Canais do YouTube</h1>
-      <h1>Consultar Canal do YouTube</h1>
-      <input type="text" id="channelId" placeholder="Cole o ID do canal">
-      <button onclick="buscarCanal()">Buscar</button>
-    </div>
     <div id="result"></div>
   <div class="container">
     <h2 id="titulo"></h2>
       <div id="categoryContent">
-      <!-- Aqui serão exibidos os canais de acordo com a categoria -->
       </div>
     </div>
     <button onclick="prepararPopupParaNovoCanal()" id="cadastrarBtn">+ Cadastrar Novo Conteúdo</button>
@@ -46,13 +39,13 @@
     <h2>Cadastrar Conteúdo</h2>
     
     <label for="newChannelName">Nome do Conteúdo:</label>
-    <input type="text" id="newChannelName" placeholder="Nome do Canal">
+    <input type="text" id="newChannelName" placeholder="Nome do Conteúdo">
     <label for="newChannelDescription">Descrição:</label>
-    <input type="text" id="newChannelDescription" placeholder="Descrição do Canal">
+    <input type="text" id="newChannelDescription" placeholder="Descrição do Conteúdo">
     <label for="newChannelLink">Link do Conteúdo:</label>
-    <input type="url" id="newChannelLink" placeholder="Link do Canal">
+    <input type="url" id="newChannelLink" placeholder="Link do Conteúdo">
     <label for="newChannelImage">Link da Imagem:</label>
-    <input type="url" id="newChannelImage" placeholder="URL da imagem do canal">
+    <input type="url" id="newChannelImage" placeholder="URL da imagem">
     <label for="newChannelLanguage">Categoria:</label>
     <select id="newChannelLanguage">
       <option value="Francês">Francês</option>
