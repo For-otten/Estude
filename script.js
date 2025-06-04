@@ -231,7 +231,7 @@ function prepararPopupParaNovoCanal() {
     });
   } else {
     idiomaField.style.display = 'block';
-    ['Inglês', 'Francês', 'Japonês'].forEach(lang => {
+    ['Inglês', 'Francês', 'Japonês', 'Chinês'].forEach(lang => {
       const option = document.createElement('option');
       option.value = lang;
       option.textContent = lang;
