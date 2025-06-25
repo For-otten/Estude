@@ -234,6 +234,7 @@ li.active {
     margin-top: 16px;
     font-size: 12px;
     padding: 0 14%;
+    letter-spacing: 1px;
 }
 
 .channel-card h3 {
