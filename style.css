@@ -199,7 +199,9 @@ li.active {
 
 #categoryContent h2 {
     grid-column: 1 / -1;
+    padding: 13px 0 22px;
     text-align: start;
+    border-bottom: 1px solid;
 }
 
 .container {
