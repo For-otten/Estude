@@ -289,7 +289,7 @@ li.active {
 .btns {
     width: 87%;
     position: absolute;
-    bottom: 8px;
+    bottom: -31px;
     display: flex;
     font-size: 0;
     justify-content: space-between;
