@@ -29,7 +29,19 @@ function salvarCanal() {
   const nome = document.getElementById('newChannelName').value;
   const descricao = document.getElementById('newChannelDescription').value;
   const link = document.getElementById('newChannelLink').value;
-  const imagem = document.getElementById('newChannelImage').value;
+
+  let imagem = document.getElementById('newChannelImage').value;
+
+  if (!imagem) {
+    if (link.includes('youtube.com/watch?v=')) {
+      const videoId = link.split('v=')[1].split('&')[0];
+      imagem = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+    } else if (link.includes('youtu.be/')) {
+      const videoId = link.split('youtu.be/')[1].split('?')[0];
+      imagem = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+    }
+  }
+
   const categoria = document.getElementById('titulo').innerText.replace('Canais de ', '');
   const idioma = document.getElementById('newChannelLanguage').value;
   const tag = categoria === 'Programação' ? document.getElementById('newChannelTag').value : '';
@@ -68,7 +80,7 @@ function abrirCanal(link) {
   window.open(link, '_blank');
 }
 
-document.querySelector('.sidebar').addEventListener('click', function(event) {
+document.querySelector('.sidebar').addEventListener('click', function (event) {
   if (event.target.tagName === 'LI') {
     document.querySelectorAll('.sidebar li').forEach(li => li.classList.remove('active'));
     event.target.classList.add('active');
@@ -78,12 +90,12 @@ document.querySelector('.sidebar').addEventListener('click', function(event) {
   }
 });
 
-window.onload = function() {
+window.onload = function () {
   carregarCanaisDoLocalStorage();
 
   const listaCategorias = document.querySelectorAll('.sidebar li');
   listaCategorias.forEach(li => li.classList.remove('active'));
-  
+
   const primeiraCategoria = Array.from(listaCategorias).find(li => li.innerText === 'Idiomas');
   if (primeiraCategoria) {
     primeiraCategoria.classList.add('active');
@@ -165,18 +177,18 @@ function carregarCategoria(categoria) {
 
 
 
-tagsUnicas.forEach(tag => {
-  const canaisPorTag = listaCanais.filter(c => c.language === tag);
+  tagsUnicas.forEach(tag => {
+    const canaisPorTag = listaCanais.filter(c => c.language === tag);
 
-  if (canaisPorTag.length) {
-    const tituloTag = document.createElement('h2');
-    tituloTag.innerText = tag;
-    categoryContent.appendChild(tituloTag);
+    if (canaisPorTag.length) {
+      const tituloTag = document.createElement('h2');
+      tituloTag.innerText = tag;
+      categoryContent.appendChild(tituloTag);
 
-    canaisPorTag.forEach((canal, index) => {
-      const card = document.createElement('div');
-      card.className = 'channel-card';
-      card.innerHTML = `
+      canaisPorTag.forEach((canal, index) => {
+        const card = document.createElement('div');
+        card.className = 'channel-card';
+        card.innerHTML = `
         <h3>${canal.name}</h3>
         ${canal.image ? `<img src="${canal.image}" alt="${canal.name}" class="channel-thumbnail">` : ''}
         <p>${canal.description}</p>
@@ -186,28 +198,28 @@ tagsUnicas.forEach(tag => {
         </div>
       `;
 
-      card.onclick = () => abrirCanal(canal.link);
+        card.onclick = () => abrirCanal(canal.link);
 
-      // Resto dos eventos (mouseenter, click edit/delete etc.)
-      const btnEdit = card.querySelector('.btnedit');
-      const btnDelete = card.querySelector('.btnedelete');
+        // Resto dos eventos (mouseenter, click edit/delete etc.)
+        const btnEdit = card.querySelector('.btnedit');
+        const btnDelete = card.querySelector('.btnedelete');
 
-      btnEdit.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
-        editarCanal(categoria, indexNoArrayCompleto);
+        btnEdit.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
+          editarCanal(categoria, indexNoArrayCompleto);
+        });
+
+        btnDelete.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
+          excluirCanal(categoria, indexNoArrayCompleto);
+        });
+
+        categoryContent.appendChild(card);
       });
-
-      btnDelete.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const indexNoArrayCompleto = canaisPorCategoria[categoria].indexOf(canal);
-        excluirCanal(categoria, indexNoArrayCompleto);
-      });
-
-      categoryContent.appendChild(card);
-    });
-  }
-});
+    }
+  });
 
 }
 function prepararPopupParaNovoCanal() {
@@ -219,7 +231,7 @@ function prepararPopupParaNovoCanal() {
   const idiomaField = idiomaSelect.parentElement;
 
   // Limpar o campo de idioma antes de adicionar novas opções
-  idiomaSelect.innerHTML = ''; 
+  idiomaSelect.innerHTML = '';
 
   if (categoria === 'Programação') {
     idiomaField.style.display = 'block';
@@ -259,7 +271,7 @@ function importarConteudo(event) {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = function(e) {
+  reader.onload = function (e) {
     try {
       const importedData = JSON.parse(e.target.result);
       if (typeof importedData === 'object' && importedData !== null) {
