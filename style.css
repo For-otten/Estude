@@ -224,6 +224,7 @@ li.active {
     display: flex;
     width: 96vw;
     margin-top: 3%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(17 16 16 / 30%) 100%);
 }
 
 .tras,
@@ -231,7 +232,7 @@ li.active {
     position: absolute;
     top: 14%;
     opacity: 0.5;
-    height: 199px;
+    height: 388px;
     border: none;
     font-size: xx-large;
     width: 2%;
