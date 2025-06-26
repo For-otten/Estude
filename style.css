@@ -359,7 +359,7 @@ li.active {
 }
 
 .channel-card#primeiro-na-esquerda:hover {
-  transform: scale(1.2) translateY(6px) translateX(45px);
+  transform: scale(1.2) translateY(6px) translateX(35px);
 }
 
 .channel-card.primeiro-na-esquerda-button:hover{
