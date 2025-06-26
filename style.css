@@ -358,7 +358,7 @@ li.active {
     transform: scale(1.2) translateY(6px);
 }
 
-.channel-card.primeiro-na-esquerda:hover {
+.channel-card#primeiro-na-esquerda:hover {
   transform: scale(1.2) translateY(6px) translateX(45px);
 }
 

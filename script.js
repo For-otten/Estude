@@ -242,7 +242,7 @@ function carregarCategoria(categoria) {
         cards.forEach(card => {
           const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
           if (Math.abs(relativeLeft) < 6) {
-            card.classList.add('primeiro-na-esquerda');
+            card.id = 'primeiro-na-esquerda';
           }
         });
       }
