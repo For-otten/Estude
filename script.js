@@ -165,42 +165,55 @@ function carregarCategoria(categoria) {
   categoryContent.innerHTML = '';
   cadastrarbnt.style.display = 'inline-block';
 
-  // Remove itens nulos do array
   const listaCanais = (canaisPorCategoria[categoria] || []).filter(c => c != null);
 
-  // Filtra somente itens com language válido e não vazio
   const tagsUnicas = [...new Set(
     listaCanais
       .filter(c => c.language != null && c.language !== '')
       .map(c => c.language)
   )];
 
-
-
   tagsUnicas.forEach(tag => {
-    const canaisPorTag = listaCanais.filter(c => c.language === tag);
+  const canaisPorTag = listaCanais.filter(c => c.language === tag);
 
-    if (canaisPorTag.length) {
-      const tituloTag = document.createElement('h2');
-      tituloTag.innerText = tag;
-      categoryContent.appendChild(tituloTag);
+  if (canaisPorTag.length) {
+    const wrapperContainer = document.createElement('div');
+    wrapperContainer.className = 'cards-wrapper'; // precisa ter position: relative no CSS
 
-      canaisPorTag.forEach((canal, index) => {
+    const tituloTag = document.createElement('h2');
+    tituloTag.innerText = tag;
+    wrapperContainer.appendChild(tituloTag);
+
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'cards';
+
+    const btnEsquerda = document.createElement('button');
+    btnEsquerda.className = 'tras';
+    btnEsquerda.textContent = '<';
+
+    const btnDireita = document.createElement('button');
+    btnDireita.className = 'frente';
+    btnDireita.textContent = '>';
+
+    for (let i = 0; i < canaisPorTag.length; i += 5) {
+      const scrollDiv = document.createElement('div');
+      scrollDiv.className = 'channelscroll';
+
+      canaisPorTag.slice(i, i + 5).forEach(canal => {
         const card = document.createElement('div');
         card.className = 'channel-card';
         card.innerHTML = `
-        <h3>${canal.name}</h3>
-        ${canal.image ? `<img src="${canal.image}" alt="${canal.name}" class="channel-thumbnail">` : ''}
-        <p>${canal.description}</p>
-        <div class="btns">
-          <button class="btnedit">Editar</button>
-          <button class="btnedelete">Deletar</button>
-        </div>
-      `;
+          <h3>${canal.name}</h3>
+          ${canal.image ? `<img src="${canal.image}" alt="${canal.name}" class="channel-thumbnail">` : ''}
+          <p>${canal.description}</p>
+          <div class="btns">
+            <button class="btnedit">Editar</button>
+            <button class="btnedelete">Deletar</button>
+          </div>
+        `;
 
         card.onclick = () => abrirCanal(canal.link);
 
-        // Resto dos eventos (mouseenter, click edit/delete etc.)
         const btnEdit = card.querySelector('.btnedit');
         const btnDelete = card.querySelector('.btnedelete');
 
@@ -216,12 +229,50 @@ function carregarCategoria(categoria) {
           excluirCanal(categoria, indexNoArrayCompleto);
         });
 
-        categoryContent.appendChild(card);
+        scrollDiv.appendChild(card);
       });
+
+      cardsContainer.appendChild(scrollDiv);
     }
-  });
+
+    // Scroll buttons behavior
+    const scrollAmount = 2450;
+
+    btnDireita.addEventListener('click', () => {
+      cardsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    btnEsquerda.addEventListener('click', () => {
+      cardsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    cardsContainer.addEventListener('scroll', () => {
+      btnEsquerda.style.display = cardsContainer.scrollLeft > 0 ? 'block' : 'none';
+      btnDireita.style.display = (cardsContainer.scrollLeft + cardsContainer.clientWidth >= cardsContainer.scrollWidth - 1) ? 'none' : 'block';
+    });
+
+    // Adiciona no wrapper
+    wrapperContainer.appendChild(btnEsquerda);
+    wrapperContainer.appendChild(cardsContainer);
+    wrapperContainer.appendChild(btnDireita);
+
+    // Só exibe botões se houver conteúdo pra scrollar
+    requestAnimationFrame(() => {
+      if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
+        btnEsquerda.style.display = 'none';
+        btnDireita.style.display = 'block';
+      } else {
+        btnEsquerda.style.display = 'none';
+        btnDireita.style.display = 'none';
+      }
+    });
+
+    categoryContent.appendChild(wrapperContainer);
+  }
+});
 
 }
+
 function prepararPopupParaNovoCanal() {
   mostrarPopup();
 
