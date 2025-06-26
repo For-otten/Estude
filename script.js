@@ -115,7 +115,6 @@ function editarCanal(categoria, index) {
   modoEdicao = true;
   indexEdicao = index;
 
-  // Atualizar as opções de idioma no popup, conforme a categoria
   prepararPopupParaNovoCanal();
 
   mostrarPopup();
@@ -178,7 +177,7 @@ function carregarCategoria(categoria) {
 
     if (canaisPorTag.length) {
       const wrapperContainer = document.createElement('div');
-      wrapperContainer.className = 'cards-wrapper'; // precisa ter position: relative no CSS
+      wrapperContainer.className = 'cards-wrapper'; 
 
       const tituloTag = document.createElement('h2');
       tituloTag.innerText = tag;
@@ -235,7 +234,6 @@ function carregarCategoria(categoria) {
         cardsContainer.appendChild(scrollDiv);
       }
 
-      // Scroll buttons behavior
       const scrollAmount = 2350;
       function aplicarClassePrimeiroCard(cardsContainer) {
         const cards = cardsContainer.querySelectorAll('.channel-card');
@@ -253,7 +251,6 @@ function carregarCategoria(categoria) {
       cardsContainer.addEventListener('scroll', () => {
         const cards = cardsContainer.querySelectorAll('.channel-card');
 
-        // Remove a classe de todos antes
         cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
 
         const btnEsquerdaRect = btnEsquerda.getBoundingClientRect();
@@ -261,13 +258,10 @@ function carregarCategoria(categoria) {
         cards.forEach(card => {
           const cardRect = card.getBoundingClientRect();
 
-          // Posição relativa do card ao container para o scroll esquerdo
           const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
 
-          // 1. Card encostado na esquerda do container
           const encostadoEsquerda = Math.abs(relativeLeft) < 6;
 
-          // 2. Card está embaixo (sobreposto) do botão esquerdo
           const sobreBotaoEsquerda = (
             cardRect.right > btnEsquerdaRect.left &&
             cardRect.left < btnEsquerdaRect.right &&
@@ -296,12 +290,10 @@ function carregarCategoria(categoria) {
         btnDireita.style.display = (cardsContainer.scrollLeft + cardsContainer.clientWidth >= cardsContainer.scrollWidth - 1) ? 'none' : 'block';
       });
 
-      // Adiciona no wrapper
       wrapperContainer.appendChild(btnEsquerda);
       wrapperContainer.appendChild(cardsContainer);
       wrapperContainer.appendChild(btnDireita);
 
-      // Só exibe botões se houver conteúdo pra scrollar
       requestAnimationFrame(() => {
         if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
           btnEsquerda.style.display = 'none';
@@ -328,7 +320,6 @@ function prepararPopupParaNovoCanal() {
   const idiomaSelect = document.getElementById('newChannelLanguage');
   const idiomaField = idiomaSelect.parentElement;
 
-  // Limpar o campo de idioma antes de adicionar novas opções
   idiomaSelect.innerHTML = '';
 
   if (categoria === 'Programação') {
@@ -375,7 +366,6 @@ function importarConteudo(event) {
       if (typeof importedData === 'object' && importedData !== null) {
         canaisPorCategoria = importedData;
         salvarCanaisNoLocalStorage();
-        // Atualiza a categoria atual exibida
         const categoriaAtual = document.querySelector('.sidebar li.active')?.innerText;
         if (categoriaAtual) carregarCategoria(categoriaAtual);
         alert('Canais importados com sucesso!');
