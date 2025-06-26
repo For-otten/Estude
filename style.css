@@ -138,6 +138,7 @@ li.active {
     color: white;
     flex-direction: row;
     justify-content: center;
+    z-index: 40;
 }
 
 .sidebar h2 {
