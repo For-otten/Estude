@@ -243,7 +243,11 @@ li.active {
     transition: 200ms;
 }
 
-.tras,
+.tras:hover {
+    opacity: 0.8;
+    transition: 200ms;
+}
+
 .frente:hover {
     opacity: 0.8;
     transition: 200ms;
@@ -360,14 +364,15 @@ li.active {
 }
 
 .channel-card#primeiro-na-esquerda:hover {
-  transform: scale(1.2) translateY(6px) translateX(35px);
+    transform: scale(1.2) translateY(6px) translateX(35px);
 }
 
-.channel-card.primeiro-na-esquerda-button:hover{
+.channel-card.primeiro-na-esquerda-button:hover {
 
-  transform: scale(1.2) translateY(6px) translateX(65px);
+    transform: scale(1.2) translateY(6px) translateX(65px);
 
 }
+
 #cadastrarBtn {
     display: inline-block;
     margin-right: 1%;
