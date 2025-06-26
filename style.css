@@ -10,7 +10,7 @@ body {
 }
 
 .content {
-    background: #141414;
+    background: #161616;
     background-attachment: fixed;
     background-size: cover;
 }
@@ -131,7 +131,7 @@ li.active {
     height: 73px;
     opacity: 0.8;
     display: flex;
-    background: #230e0e;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgb(0 0 0 / 55%) 100%);
     position: absolute;
     background-attachment: fixed;
     background-size: cover;
@@ -294,7 +294,7 @@ li.active {
     top: -10px;
     padding: 4px;
     border-radius: 6px;
-    transition: font-size 0.3s ease;
+    transition: font-size 0.1s ease;
 }
 
 .channel-card:hover button {
