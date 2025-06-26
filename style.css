@@ -260,7 +260,7 @@ li.active {
     margin-right: 0.5%;
     margin-bottom: 1.5%;
     backdrop-filter: blur(8px);
-    width: 490px;
+    width: 400px;
     height: 280px;
     color: white;
     position: relative;
