@@ -155,73 +155,6 @@ function excluirCanal(categoria, index) {
 
   carregarCategoria(categoria);
 }
-const scrollAmount = 2350;
-
-function atualizarPrimeiros(cardsContainer, btnEsquerda) {
-  const cards = cardsContainer.querySelectorAll('.channel-card');
-  const btnRect = btnEsquerda.getBoundingClientRect();
-
-  cards.forEach(card => {
-    card.classList.remove('encostado-no-botao');
-    card.removeAttribute('data-primeiro');
-  });
-
-  cards.forEach(card => {
-    const cardRect = card.getBoundingClientRect();
-    const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
-
-    const encostadoEsquerda = Math.abs(relativeLeft) < 6;
-    const sobreBotaoEsquerda = (
-      cardRect.right > btnRect.left &&
-      cardRect.left < btnRect.right &&
-      cardRect.bottom > btnRect.top &&
-      cardRect.top < btnRect.bottom
-    );
-
-    if (encostadoEsquerda) {
-      card.setAttribute('data-primeiro', 'true');
-    }
-
-    if (encostadoEsquerda || sobreBotaoEsquerda) {
-      card.classList.add('encostado-no-botao');
-    }
-  });
-}
-
-function configurarScroll(cardsContainer, btnEsquerda, btnDireita) {
-  let ticking = false;
-
-  cardsContainer.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        atualizarPrimeiros(cardsContainer, btnEsquerda);
-        btnEsquerda.style.display = cardsContainer.scrollLeft > 0 ? 'block' : 'none';
-        btnDireita.style.display = (cardsContainer.scrollLeft + cardsContainer.clientWidth >= cardsContainer.scrollWidth - 1) ? 'none' : 'block';
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-
-  btnDireita.addEventListener('click', () => {
-    cardsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
-
-  btnEsquerda.addEventListener('click', () => {
-    cardsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-
-  requestAnimationFrame(() => {
-    if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
-      btnEsquerda.style.display = 'none';
-      btnDireita.style.display = 'block';
-    } else {
-      btnEsquerda.style.display = 'none';
-      btnDireita.style.display = 'none';
-    }
-    atualizarPrimeiros(cardsContainer, btnEsquerda);
-  });
-}
 
 function carregarCategoria(categoria) {
   const categoryContent = document.getElementById('categoryContent');
@@ -244,7 +177,7 @@ function carregarCategoria(categoria) {
 
     if (canaisPorTag.length) {
       const wrapperContainer = document.createElement('div');
-      wrapperContainer.className = 'cards-wrapper';
+      wrapperContainer.className = 'cards-wrapper'; 
 
       const tituloTag = document.createElement('h2');
       tituloTag.innerText = tag;
@@ -338,10 +271,18 @@ function carregarCategoria(categoria) {
 
           if (encostadoEsquerda || sobreBotaoEsquerda) {
             card.classList.add('primeiro-na-esquerda-button');
-          } else {
+          }else{
             card.classList.remove('primeiro-na-esquerda-button');
           }
         });
+      });
+
+      btnDireita.addEventListener('click', () => {
+        cardsContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      btnEsquerda.addEventListener('click', () => {
+        cardsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
 
       cardsContainer.addEventListener('scroll', () => {
@@ -353,10 +294,18 @@ function carregarCategoria(categoria) {
       wrapperContainer.appendChild(cardsContainer);
       wrapperContainer.appendChild(btnDireita);
 
+      requestAnimationFrame(() => {
+        if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
+          btnEsquerda.style.display = 'none';
+          btnDireita.style.display = 'block';
+        } else {
+          btnEsquerda.style.display = 'none';
+          btnDireita.style.display = 'none';
+        }
+      });
 
       categoryContent.appendChild(wrapperContainer);
       aplicarClassePrimeiroCard(cardsContainer);
-      configurarScroll(cardsContainer, btnEsquerda, btnDireita);
 
     }
   });
