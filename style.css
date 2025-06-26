@@ -359,12 +359,12 @@ li.active {
 }
 
 .channel-card.primeiro-na-esquerda:hover {
-  transform: scale(1.25) translateY(6px) translateX(25px);
+  transform: scale(1.25) translateY(6px) translateX(45px);
 }
 
 .channel-card.primeiro-na-esquerda-button:hover{
 
-  transform: scale(1.25) translateY(6px) translateX(45px);
+  transform: scale(1.25) translateY(6px) translateX(65px);
 
 }
 #cadastrarBtn {
