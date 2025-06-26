@@ -355,16 +355,16 @@ li.active {
     transition: 200ms;
     z-index: 10;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    transform: scale(1.13) translateY(6px);
+    transform: scale(1.25) translateY(6px);
 }
 
 .channel-card.primeiro-na-esquerda:hover {
-  transform: scale(1.13) translateY(6px) translateX(25px);
+  transform: scale(1.25) translateY(6px) translateX(25px);
 }
 
 .channel-card.primeiro-na-esquerda-button:hover{
 
-  transform: scale(1.13) translateY(6px) translateX(45px);
+  transform: scale(1.25) translateY(6px) translateX(45px);
 
 }
 #cadastrarBtn {
