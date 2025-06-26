@@ -294,7 +294,7 @@ li.active {
     top: -10px;
     padding: 4px;
     border-radius: 6px;
-    transition: font-size 0.1s ease;
+    transition: font-size 0.3s ease;
 }
 
 .channel-card:hover button {
