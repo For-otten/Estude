@@ -374,16 +374,16 @@ li.active {
     transition: 200ms;
     z-index: 10;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-    transform: scale(1.2) translateY(6px);
+    transform: scale(1.1) translateY(6px);
 }
 
 .channel-card#primeiro-na-esquerda:hover {
-    transform: scale(1.2) translateY(6px) translateX(35px);
+    transform: scale(1.1) translateY(6px) translateX(35px);
 }
 
 .channel-card.primeiro-na-esquerda-button:hover {
 
-    transform: scale(1.2) translateY(6px) translateX(65px);
+    transform: scale(1.1) translateY(6px) translateX(65px);
 
 }
 
