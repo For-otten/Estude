@@ -139,6 +139,7 @@ li.active {
     flex-direction: row;
     justify-content: center;
     z-index: 40;
+    border-bottom: 1px solid #865aff8c;
 }
 
 .sidebar h2 {
@@ -195,12 +196,22 @@ li.active {
     margin-top: 4%;
 }
 
+.inicio {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.inicio img {
+    width: 49px;
+    margin-right: 16px;
+}
+
 #categoryContent h2 {
     position: absolute;
     width: 100%;
     text-align: start;
-    border-bottom: 1px solid;
-    padding-bottom: 13px;
+
 }
 
 .container {
@@ -214,6 +225,7 @@ li.active {
     overflow-y: hidden;
     max-width: 98vw;
     position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.158);
 }
 
 .cards-wrapper {
@@ -224,16 +236,18 @@ li.active {
 .channelscroll {
     display: flex;
     width: 96vw;
-    margin-top: 3%;
-    background: linear-gradient(180deg, rgb(75 74 74) 0%, rgb(17 16 16 / 30%) 100%)
+    margin-top: 3.1%;
+    border-radius: 10px;
+    height: 375px;
+    
 }
 
 .tras,
 .frente {
     position: absolute;
     top: 14%;
-    opacity: 0.5;
-    height: 388px;
+    opacity: 0.9;
+    height: 377px;
     border: none;
     font-size: xx-large;
     width: 2%;
@@ -309,8 +323,7 @@ li.active {
 
 .channel-card:hover h3 {
     font-size: large;
-    border: 1px solid #ffffff4f;
-    background: black;
+    background: #865AFF;
 
 }
 
