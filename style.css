@@ -239,7 +239,7 @@ li.active {
     margin-top: 3.1%;
     border-radius: 10px;
     height: 375px;
-    
+
 }
 
 .tras,
@@ -324,7 +324,7 @@ li.active {
 .channel-card:hover h3 {
     font-size: large;
     background: #865AFF;
-
+    box-shadow: 0px 0px 14px 2px #9169ff;
 }
 
 .btnedelete {
