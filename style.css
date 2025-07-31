@@ -16,14 +16,13 @@ body {
 }
 
 input {
-    width: 92%;
+    width: 100%;
     background: #272626;
-    border-radius: 6px;
+    border-radius: 20px;
     border: 1px solid #161616;
-    margin: 3% 0 7%;
+    margin: 2% 0 4%;
     color: white;
-    padding: 14px;
-    font-size: 10px;
+    padding: 16px;
 }
 
 button {
@@ -36,9 +35,18 @@ button {
     margin-top: 20px;
 }
 
+.popup-content p {
+    margin: 0;
+    text-align: start;
+}
+
 .popupinsertchannel {
     display: none;
     position: absolute;
+}
+
+.select-container {
+    text-align: start;
 }
 
 .popup {
@@ -55,11 +63,15 @@ button {
 
 .popup-content {
     background: #2c2c2c;
-    padding: 26px 73px 10px;
-    border-radius: 5px;
-    width: 23%;
+    padding: 40px 97px 55px 70px;
+    border-radius: 16px;
+    width: 32%;
     position: relative;
-    height: 630px;
+    height: 586px;
+}
+
+.popup-content h2 {
+    margin-bottom: 3%;
 }
 
 .popup-content button {
@@ -69,7 +81,8 @@ button {
     font-weight: bold;
     font-size: medium;
     transition: 200ms;
-
+    border-bottom: 1px solid;
+    margin: 2%;
 }
 
 .popup-content button:hover {
@@ -84,11 +97,11 @@ button {
 
 .popup-buttons {
     position: absolute;
-    width: 97%;
+    width: 100%;
     display: flex;
     bottom: 11px;
     right: 11px;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 button {
@@ -375,7 +388,28 @@ li.active {
     z-index: 10;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     transform: scale(1.14) translateY(6px);
-    
+
+}
+
+
+
+#fecharpopup {
+    margin: 0;
+    top: 18px;
+    right: 25px;
+    position: absolute;
+    background: rgb(121, 21, 21);
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    font-weight: normal;
+    font-size: 17px;
+    padding: 0px;
+    border: none;
+}
+
+#fecharpopup:hover {
+    background: red;
 }
 
 .channel-card#primeiro-na-esquerda:hover {
@@ -442,7 +476,55 @@ select {
     color: white;
     cursor: pointer;
     background: #272626;
-    padding: 7px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 20px;
     border: 1px solid #161616;
+    margin-top: 4%;
+    width: 30%;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 30%;
+}
+
+.custom-select-wrapper select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    background: #272626;
+    color: white;
+    padding: 16px;
+    padding-right: 45px;
+    /* espaço pra seta */
+    border-radius: 20px;
+    border: 1px solid #161616;
+    font-size: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* seta customizada */
+.custom-select-wrapper::after {
+    content: "˯";
+    position: absolute;
+    top: 47%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: #ffffff;
+    font-size: 30px;
+    pointer-events: none;
+    transition: 200ms;
+
+}
+
+
+.custom-select-wrapper:hover::after {
+    transition: 200ms;
+    top: 52%;
+}
+
+.custom-select-wrapper:active::after {
+    top: 70%;
 }

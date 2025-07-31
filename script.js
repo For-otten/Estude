@@ -39,8 +39,25 @@ function salvarCanal() {
     } else if (link.includes('youtu.be/')) {
       const videoId = link.split('youtu.be/')[1].split('?')[0];
       imagem = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+    } else {
+      // Gera cor aleatória
+      const cor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+
+      // Verifica se a cor é clara
+      function corEhClara(hex) {
+        const r = parseInt(hex.substr(0, 2), 16);
+        const g = parseInt(hex.substr(2, 2), 16);
+        const b = parseInt(hex.substr(4, 2), 16);
+        const brilho = (r * 299 + g * 587 + b * 114) / 1000;
+        return brilho > 160;
+      }
+
+      const texto = encodeURIComponent(nome.slice(0, 30)); // Limita texto da imagem
+      const corTexto = corEhClara(cor) ? '000' : 'fff'; // Preto se fundo claro
+      imagem = `https://placehold.co/400x225/${cor}/${corTexto}?text=${texto}`;
     }
   }
+
 
   const categoria = document.getElementById('titulo').innerText.replace('Canais de ', '');
   const idioma = document.getElementById('newChannelLanguage').value;
@@ -159,6 +176,17 @@ function excluirCanal(categoria, index) {
 function carregarCategoria(categoria) {
   const categoryContent = document.getElementById('categoryContent');
   const titulo = document.getElementById('titulo');
+
+  const scrollPositions = {};
+  const wrappersExistentes = categoryContent.querySelectorAll('.cards-wrapper');
+  wrappersExistentes.forEach(wrapper => {
+    const tagTitulo = wrapper.querySelector('h2')?.innerText;
+    const cardsContainer = wrapper.querySelector('.cards');
+    if (tagTitulo && cardsContainer) {
+      scrollPositions[tagTitulo] = cardsContainer.scrollLeft;
+    }
+  });
+
   titulo.innerHTML = `Canais de ${categoria}`;
   const cadastrarbnt = document.getElementById('cadastrarBtn');
   categoryContent.innerHTML = '';
@@ -177,7 +205,7 @@ function carregarCategoria(categoria) {
 
     if (canaisPorTag.length) {
       const wrapperContainer = document.createElement('div');
-      wrapperContainer.className = 'cards-wrapper'; 
+      wrapperContainer.className = 'cards-wrapper';
 
       const tituloTag = document.createElement('h2');
       tituloTag.innerText = tag;
@@ -209,7 +237,7 @@ function carregarCategoria(categoria) {
             <button class="btnedit">Editar</button>
             <button class="btnedelete">Deletar</button>
           </div>
-        `;
+          `;
 
           card.onclick = () => abrirCanal(canal.link);
 
@@ -235,6 +263,7 @@ function carregarCategoria(categoria) {
       }
 
       const scrollAmount = 2350;
+
       function aplicarClassePrimeiroCard(cardsContainer) {
         const cards = cardsContainer.querySelectorAll('.channel-card');
         cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
@@ -247,6 +276,15 @@ function carregarCategoria(categoria) {
         });
       }
 
+      function atualizarVisibilidadeBotoes() {
+        if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
+          btnEsquerda.style.display = cardsContainer.scrollLeft > 0 ? 'block' : 'none';
+          btnDireita.style.display = (cardsContainer.scrollLeft + cardsContainer.clientWidth >= cardsContainer.scrollWidth - 1) ? 'none' : 'block';
+        } else {
+          btnEsquerda.style.display = 'none';
+          btnDireita.style.display = 'none';
+        }
+      }
 
       cardsContainer.addEventListener('scroll', () => {
         const cards = cardsContainer.querySelectorAll('.channel-card');
@@ -271,10 +309,12 @@ function carregarCategoria(categoria) {
 
           if (encostadoEsquerda || sobreBotaoEsquerda) {
             card.classList.add('primeiro-na-esquerda-button');
-          }else{
+          } else {
             card.classList.remove('primeiro-na-esquerda-button');
           }
         });
+
+        atualizarVisibilidadeBotoes();
       });
 
       btnDireita.addEventListener('click', () => {
@@ -285,32 +325,27 @@ function carregarCategoria(categoria) {
         cardsContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
 
-      cardsContainer.addEventListener('scroll', () => {
-        btnEsquerda.style.display = cardsContainer.scrollLeft > 0 ? 'block' : 'none';
-        btnDireita.style.display = (cardsContainer.scrollLeft + cardsContainer.clientWidth >= cardsContainer.scrollWidth - 1) ? 'none' : 'block';
-      });
+      cardsContainer.addEventListener('scrollend', atualizarVisibilidadeBotoes);
 
       wrapperContainer.appendChild(btnEsquerda);
       wrapperContainer.appendChild(cardsContainer);
       wrapperContainer.appendChild(btnDireita);
 
-      requestAnimationFrame(() => {
-        if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
-          btnEsquerda.style.display = 'none';
-          btnDireita.style.display = 'block';
-        } else {
-          btnEsquerda.style.display = 'none';
-          btnDireita.style.display = 'none';
-        }
-      });
-
       categoryContent.appendChild(wrapperContainer);
-      aplicarClassePrimeiroCard(cardsContainer);
 
+      if (scrollPositions[tag]) {
+        cardsContainer.scrollLeft = scrollPositions[tag];
+      }
+
+      requestAnimationFrame(() => {
+        atualizarVisibilidadeBotoes();
+        aplicarClassePrimeiroCard(cardsContainer);
+      });
     }
   });
-
 }
+
+
 
 function prepararPopupParaNovoCanal() {
   mostrarPopup();

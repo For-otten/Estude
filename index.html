@@ -1,69 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <title>Estude</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <!-- Menu Lateral -->
   <div class="sidebar">
     <ul>
-      <div class="inicio"><img src="design-responsivo.png"><h2>Conteúdos</h2></div>
+      <div class="inicio"><img src="design-responsivo.png">
+        <h2>Conteúdos</h2>
+      </div>
       <li>Programação</li>
       <li>Idiomas</li>
     </ul>
     <div class="import-export">
-      <button onclick="exportarConteudo()" class="exportImportBtn"><img src="import-export.png" class="logoBtn"><p>Salvar Conteúdo</p></button>
-    <label for="importFile" class="exportImportBtn">
-      <img src="import.png" class="logoBtn">
-      <p>Importar Conteúdo</p>
-    </label>
-    <input type="file" id="importFile" accept=".json" onchange="importarConteudo(event)" style="display:none;" />
+      <button onclick="exportarConteudo()" class="exportImportBtn"><img src="import-export.png" class="logoBtn">
+        <p>Salvar Conteúdo</p>
+      </button>
+      <label for="importFile" class="exportImportBtn">
+        <img src="import.png" class="logoBtn">
+        <p>Importar Conteúdo</p>
+      </label>
+      <input type="file" id="importFile" accept=".json" onchange="importarConteudo(event)" style="display:none;" />
     </div>
   </div>
 
   <!-- Conteúdo Principal -->
   <div class="content">
     <div id="result"></div>
-  <div class="container">
-    <h2 id="titulo"></h2>
+    <div class="container">
+      <h2 id="titulo"></h2>
       <div id="categoryContent">
       </div>
     </div>
     <button onclick="prepararPopupParaNovoCanal()" id="cadastrarBtn">+ Cadastrar Novo Conteúdo</button>
 
     <!-- Popup de Cadastro de Canal -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <h2>Cadastrar Conteúdo</h2>
-    
-    <label for="newChannelName">Nome do Conteúdo:</label>
-    <input type="text" id="newChannelName" placeholder="Nome do Conteúdo">
-    <label for="newChannelDescription">Descrição:</label>
-    <input type="text" id="newChannelDescription" placeholder="Descrição do Conteúdo">
-    <label for="newChannelLink">Link do Conteúdo:</label>
-    <input type="url" id="newChannelLink" placeholder="Link do Conteúdo">
-    <label for="newChannelImage">Link da Imagem:</label>
-    <input type="url" id="newChannelImage" placeholder="URL da imagem">
-    <label for="newChannelLanguage">Categoria:</label>
-    <select id="newChannelLanguage">
-      <option value="Francês">Francês</option>
-      <option value="Japonês">Japonês</option>
-    </select>
-  <div id="tagField" style="display: none;">
-    <label for="newChannelTag">Tag (C#, JS, etc):</label>
-    <input type="text" id="newChannelTag" placeholder="Ex: JavaScript, C#, Gamedev">
-  </div>
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <button id="fecharpopup" onclick="fecharPopup()">x</button>
+        <h2>Cadastrar Conteúdo</h2>
 
-      <div class="popup-buttons">
-        <button onclick="salvarCanal()"><a>+</a> Adicionar Conteúdo</button>
-        <button onclick="fecharPopup()">Fechar</button>
+        <input type="text" id="newChannelName" placeholder="Título">
+        <input type="text" id="newChannelDescription" placeholder="Descrição">
+        <input type="url" id="newChannelLink" placeholder="Link a ser acessado">
+        <input type="url" id="newChannelImage" title="Opcional. Para YouTube, a thumb é carregada automaticamente. Caso queira usar uma imagem própria, insira o link direto da imagem." placeholder="Link da imagem de capa (Opcional)">
+        <div class="custom-select-wrapper">
+          <p for="newChannelLanguage">Categoria:</p>  
+          <select id="newChannelLanguage" >
+            <option value="Francês">Francês</option>
+            <option value="Japonês">Japonês</option>
+          </select>
+        </div>
+        <div id="tagField" style="display: none;">
+          <label for="newChannelTag">Tag (C#, JS, etc):</label>
+          <input type="text" id="newChannelTag" placeholder="Ex: JavaScript, C#, Gamedev">
+        </div>
+
+        <div class="popup-buttons">
+          <button onclick="salvarCanal()"><a>+</a> Adicionar Conteúdo</button>
+
+        </div>
       </div>
     </div>
-  </div>
   </div>
 
   <script src="script.js"></script>
 </body>
+
 </html>
