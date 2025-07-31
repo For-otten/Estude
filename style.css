@@ -10,7 +10,7 @@ body {
 }
 
 .content {
-    background: #161616;
+    background: linear-gradient(180deg, #161616 0%, #1b0d29 100%);
     background-attachment: fixed;
     background-size: cover;
 }
@@ -239,6 +239,7 @@ li.active {
     max-width: 98vw;
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.158);
+
 }
 
 .cards-wrapper {
