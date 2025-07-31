@@ -39,7 +39,6 @@ function salvarCanal() {
       const videoId = link.split('youtu.be/')[1].split('?')[0];
       return `https://img.youtube.com/vi/${videoId}/0.jpg`;
     } else {
-      // Gera cor aleatória
       const cor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 
       function corEhClara(hex) {
@@ -56,7 +55,6 @@ function salvarCanal() {
     }
   }
 
-  // Verifica se deve gerar a imagem
   const urlPadraoPlacehold = imagem.startsWith('https://placehold.co/');
   const urlThumbYoutube = imagem.includes('img.youtube.com/vi/');
 
@@ -133,7 +131,6 @@ function editarCanal(categoria, index) {
   document.getElementById('newChannelDescription').value = canal.description;
   document.getElementById('newChannelLink').value = canal.link;
 
-  // Detecta se a imagem é gerada automaticamente
   const imagem = canal.image || '';
   const ehImagemAutomatica = 
     imagem.startsWith('https://placehold.co/') ||
