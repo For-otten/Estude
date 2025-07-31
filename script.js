@@ -29,21 +29,19 @@ function salvarCanal() {
   const nome = document.getElementById('newChannelName').value;
   const descricao = document.getElementById('newChannelDescription').value;
   const link = document.getElementById('newChannelLink').value;
+  let imagem = document.getElementById('newChannelImage').value.trim();
 
-  let imagem = document.getElementById('newChannelImage').value;
-
-  if (!imagem) {
+  function gerarImagemAutomaticamente(nome, link) {
     if (link.includes('youtube.com/watch?v=')) {
       const videoId = link.split('v=')[1].split('&')[0];
-      imagem = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+      return `https://img.youtube.com/vi/${videoId}/0.jpg`;
     } else if (link.includes('youtu.be/')) {
       const videoId = link.split('youtu.be/')[1].split('?')[0];
-      imagem = `https://img.youtube.com/vi/${videoId}/0.jpg`;
+      return `https://img.youtube.com/vi/${videoId}/0.jpg`;
     } else {
       // Gera cor aleatória
       const cor = Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
 
-      // Verifica se a cor é clara
       function corEhClara(hex) {
         const r = parseInt(hex.substr(0, 2), 16);
         const g = parseInt(hex.substr(2, 2), 16);
@@ -52,10 +50,18 @@ function salvarCanal() {
         return brilho > 160;
       }
 
-      const texto = encodeURIComponent(nome.slice(0, 30)); // Limita texto da imagem
-      const corTexto = corEhClara(cor) ? '000' : 'fff'; // Preto se fundo claro
-      imagem = `https://placehold.co/400x225/${cor}/${corTexto}?text=${texto}`;
+      const texto = encodeURIComponent(nome.slice(0, 30));
+      const corTexto = corEhClara(cor) ? '000' : 'fff';
+      return `https://placehold.co/400x225/${cor}/${corTexto}?text=${texto}`;
     }
+  }
+
+  // Verifica se deve gerar a imagem
+  const urlPadraoPlacehold = imagem.startsWith('https://placehold.co/');
+  const urlThumbYoutube = imagem.includes('img.youtube.com/vi/');
+
+  if (!imagem || urlPadraoPlacehold || urlThumbYoutube) {
+    imagem = gerarImagemAutomaticamente(nome, link);
   }
 
 
@@ -126,7 +132,15 @@ function editarCanal(categoria, index) {
   document.getElementById('newChannelName').value = canal.name;
   document.getElementById('newChannelDescription').value = canal.description;
   document.getElementById('newChannelLink').value = canal.link;
-  document.getElementById('newChannelImage').value = canal.image;
+
+  // Detecta se a imagem é gerada automaticamente
+  const imagem = canal.image || '';
+  const ehImagemAutomatica = 
+    imagem.startsWith('https://placehold.co/') ||
+    imagem.includes('img.youtube.com/vi/');
+
+  document.getElementById('newChannelImage').value = ehImagemAutomatica ? '' : imagem;
+
   document.getElementById('newChannelLanguage').value = canal.language;
 
   modoEdicao = true;
