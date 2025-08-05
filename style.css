@@ -564,15 +564,15 @@ select {
     }
 
     li {
-        font-size: small;
+        font-size: xx-large;
     }
 
     .import-export {
-        margin-right: 10%;
+        width: 0%;
     }
 
     .logoBtn {
-        width: 21px;
+        width: 70px;
     }
 
     .cards-wrapper {
@@ -601,8 +601,9 @@ select {
 
     .channel-card {
         margin-right: 3.5%;
-        width: 193px;
-        height: 193px;
+        width: 400px;
+        height: 320px;
+        transform: none;
     }
 
     .channel-card p {
@@ -610,13 +611,39 @@ select {
         padding: 0px 2%;
     }
 
+    .channel-card button {
+        font-size: x-large;
+    }
+
     .channel-thumbnail {
+        height: 242px;
+    }
+
+    .exportImportBtn {
+        font-size: 0;
+        margin-right: 30%;
+    }
+
+    .exportImportBtn:hover {
+        font-size: 0;
+    }
+
+    li.active {
+        font-size: xxx-large;
+        margin-left: 6%;
+    }
+
+    .options {
+        align-items: center;
+        justify-content: center;
+        width: 85%;
+    }
+
+    .sidebar {
         height: 128px;
     }
-    .exportImportBtn:hover{
-        font-size: x-small;
-    }
-    li.active {
-        font-size: small;
+
+    .import-export {
+        width: 10%;
     }
 }
