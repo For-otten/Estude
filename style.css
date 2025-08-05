@@ -652,14 +652,32 @@ select {
         transform: none;
         box-shadow: none;
     }
-    .channel-card button{
+
+    .channel-card button {
         background-color: black;
     }
+
     .btnedelete {
         background-color: rgb(119, 22, 22);
-        
+
     }
+
     .btnedit {
         background-color: #7f8081;
+    }
+}
+
+@media (max-width: 700px) {
+    .logoBtn {
+        width: 32px;
+    }
+
+    li {
+        font-size: x-large;
+    }
+
+    li.active {
+        font-size: large;
+        margin-left: 4%;
     }
 }
