@@ -13,6 +13,7 @@ body {
     background: linear-gradient(180deg, #161616 0%, #1b0d29 100%);
     background-attachment: fixed;
     background-size: cover;
+    height: 100vh;
 }
 
 input {
@@ -236,7 +237,7 @@ li.active {
 }
 
 .container {
-    height: 91vh;
+    height: 88vh;
     overflow: auto;
 }
 
@@ -555,6 +556,13 @@ select {
         flex-wrap: wrap;
         padding: 0;
         justify-content: center;
+    }
+
+    #cadastrarBtn {
+        margin-top: 7%;
+        padding-bottom: 9%;
+        margin-bottom: 15%;
+        font-size: x-large;
     }
 
     .leftMenu {
