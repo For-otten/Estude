@@ -553,7 +553,7 @@ select {
     background-attachment: fixed;
     background-size: cover;
     height: 145px;
-    border-top: 1px solid;
+
     padding-top: 2%;
 }
 
@@ -563,6 +563,9 @@ select {
         height: 900px;
     }
 
+    .cadastrarBtnConteiner {
+        border-top: 1px solid;
+    }
 
     .popup-content p {
         font-size: x-large;
@@ -598,7 +601,7 @@ select {
         flex-wrap: wrap;
         padding: 0;
         justify-content: center;
-        
+
     }
 
     #cadastrarBtn {
