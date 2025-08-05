@@ -598,6 +598,7 @@ select {
         flex-wrap: wrap;
         padding: 0;
         justify-content: center;
+        
     }
 
     #cadastrarBtn {
@@ -659,6 +660,7 @@ select {
         height: 100%;
         margin-left: 4%;
         width: 97%;
+        margin-bottom: 5%;
     }
 
     .channel-card {

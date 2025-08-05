@@ -444,6 +444,7 @@ function importarConteudo(event) {
 }
 const container = document.querySelector('.container');
 const btnContainer = document.querySelector('.cadastrarBtnConteiner');
+const LIMITE_MINIMO_DE_SCROLL = 100;
 
 if (container && btnContainer) {
   container.addEventListener('scroll', function () {
@@ -451,10 +452,19 @@ if (container && btnContainer) {
     const scrollHeight = container.scrollHeight;
     const clientHeight = container.clientHeight;
 
-    if (scrollTop + clientHeight >= scrollHeight - 5) {
-      btnContainer.style.display = 'none';
+    const scrollDisponivel = scrollHeight - clientHeight;
+
+    // Só ativa se houver scroll suficiente
+    if (scrollDisponivel > LIMITE_MINIMO_DE_SCROLL) {
+      if (scrollTop + clientHeight >= scrollHeight - 5) {
+        btnContainer.style.display = 'none';
+      } else {
+        btnContainer.style.display = 'block';
+      }
     } else {
+      // Se não houver conteúdo suficiente para rolar, botão sempre visível
       btnContainer.style.display = 'block';
     }
   });
 }
+
