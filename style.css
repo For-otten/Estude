@@ -651,7 +651,7 @@ select {
     .channel-card:hover {
         transform: none;
         box-shadow: none;
-
+        z-index: 0;
     }
 
     .channel-card button {
