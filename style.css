@@ -648,7 +648,7 @@ select {
     }
 
     .channel-card {
-        margin-right: 3.5%;
+        margin: 4.5%;
         width: 400px;
         height: 247px;
         transform: none;
@@ -742,6 +742,7 @@ select {
         flex-basis: 100%;
         width: 100%;
         height: 421px;
+        margin-bottom: 4%;
     }
 
     #primeiro-na-esquerda h3 {
