@@ -607,7 +607,7 @@ select {
     }
 
     .channel-card p {
-        font-size: xx-small;
+        font-size: 0;
         padding: 0px 2%;
     }
 
