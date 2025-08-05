@@ -541,3 +541,82 @@ select {
 .custom-select-wrapper:active::after {
     top: 70%;
 }
+
+
+@media (max-width: 999px) {
+    .channelscroll {
+        display: flex;
+        width: 100%;
+        margin-top: 0.5%;
+        border-radius: 10px;
+        height: 375px;
+        flex-wrap: wrap;
+        padding: 3%;
+        justify-content: center;
+    }
+
+    .leftMenu {
+        font-size: xx-small;
+    }
+
+    .inicio {
+        display: none;
+    }
+
+    li {
+        font-size: small;
+    }
+
+    .import-export {
+        margin-right: 10%;
+    }
+
+    .logoBtn {
+        width: 21px;
+    }
+
+    .cards-wrapper {
+        margin-top: 8%;
+    }
+
+    #categoryContent h2 {
+        text-align: center;
+    }
+
+    .tras,
+    .frente {
+        display: none;
+    }
+
+    .cards {
+        flex-wrap: wrap;
+    }
+
+    .channelscroll {
+        flex-wrap: wrap;
+        padding: 3%;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .channel-card {
+        margin-right: 3.5%;
+        width: 193px;
+        height: 193px;
+    }
+
+    .channel-card p {
+        font-size: xx-small;
+        padding: 0px 2%;
+    }
+
+    .channel-thumbnail {
+        height: 128px;
+    }
+    .exportImportBtn:hover{
+        font-size: x-small;
+    }
+    li.active {
+        font-size: small;
+    }
+}
