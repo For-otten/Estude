@@ -680,4 +680,9 @@ select {
         font-size: large;
         margin-left: 4%;
     }
+
+    #categoryContent h2 {
+        font-size: 40px;
+        margin-top: 15%;
+    }
 }
