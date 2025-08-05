@@ -199,15 +199,31 @@ function carregarCategoria(categoria) {
   });
   function aplicarClassePrimeiroCard(cardsContainer) {
     const cards = cardsContainer.querySelectorAll('.channel-card');
-    cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
+    cards.forEach(card => card.removeAttribute('id'));
 
-    cards.forEach(card => {
-      const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
-      if (Math.abs(relativeLeft) < 6) {
-        card.id = 'primeiro-na-esquerda';
-      }
-    });
+    if (cards.length === 0) return;
+
+    // Verifica se os cards estão empilhados verticalmente
+    const verticalLayout = cards.length > 1 && cards[0].offsetTop !== cards[1].offsetTop;
+
+    let primeiroCard = null;
+
+    if (verticalLayout) {
+      // Ordena por posição top (mais acima na tela)
+      primeiroCard = Array.from(cards).sort((a, b) => a.offsetTop - b.offsetTop)[0];
+    } else {
+      // Layout horizontal: considera o scroll
+      primeiroCard = Array.from(cards).find(card => {
+        const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
+        return Math.abs(relativeLeft) < 6;
+      }) || cards[0]; // fallback
+    }
+
+    if (primeiroCard) {
+      primeiroCard.id = 'primeiro-na-esquerda';
+    }
   }
+
 
   titulo.innerHTML = `Canais de ${categoria}`;
   const cadastrarbnt = document.getElementById('cadastrarBtn');
@@ -318,12 +334,12 @@ function carregarCategoria(categoria) {
           card.classList.remove('primeiro-na-esquerda-button');
           card.style.removeProperty('--deslocamento-hover');
 
-          const limite = 0.4; 
+          const limite = 0.4;
           const deslocamentoMaximo = 40;
 
           if (profundidade > 0 && profundidade < larguraCard * limite) {
             const percentual = profundidade / (larguraCard * limite);
-            const curva = Math.pow(percentual, 0.9); 
+            const curva = Math.pow(percentual, 0.9);
             const deslocamento = deslocamentoMaximo * curva;
 
             card.classList.add('primeiro-na-esquerda-button');
