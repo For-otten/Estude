@@ -265,7 +265,7 @@ li.active {
 .tras,
 .frente {
     position: absolute;
-    top: 14%;
+    top: 0;
     opacity: 0.9;
     height: 377px;
     border: none;
@@ -276,6 +276,7 @@ li.active {
     z-index: 99;
     cursor: pointer;
     transition: 200ms;
+    margin-top: 3%;
 }
 
 .tras:hover {
