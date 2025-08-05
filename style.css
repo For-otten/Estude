@@ -547,6 +547,36 @@ select {
 
 
 @media (max-width: 999px) {
+    .popup-content {
+        width: 79%;
+        height: 900px;
+    }
+
+    .popup-content p {
+        font-size: x-large;
+        margin-bottom: 6%;
+    }
+
+    .popup-content button {
+        font-size: larger;
+    }
+
+    .custom-select-wrapper select {
+        font-size: larger;
+    }
+
+    #fecharpopup {
+        width: 60px;
+        height: 60px;
+        font-size: x-large;
+    }
+
+    input {
+        margin: 2% 0 7%;
+        font-size: larger;
+        padding: 27px;
+    }
+
     .channelscroll {
         display: flex;
         width: 100%;
@@ -666,7 +696,7 @@ select {
         width: 10%;
     }
 
-    .channel-card:hover {
+    .channel-card#primeiro-na-esquerda:hover {
         transform: none;
         box-shadow: none;
         z-index: 0;
@@ -706,6 +736,11 @@ select {
         flex-basis: 100%;
         width: 100%;
         height: 421px;
+    }
+
+    #primeiro-na-esquerda h3 {
+        z-index: 1;
+        font-size: xx-large;
     }
 
     #primeiro-na-esquerda img {
