@@ -237,7 +237,7 @@ li.active {
 }
 
 .container {
-    height: 88vh;
+    height: 98vh;
     overflow: auto;
 }
 
@@ -563,10 +563,6 @@ select {
         height: 900px;
     }
 
-    .container {
-        height: 100vh;
-        padding-top: 3%;
-    }
 
     .popup-content p {
         font-size: x-large;

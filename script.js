@@ -448,3 +448,20 @@ function importarConteudo(event) {
   };
   reader.readAsText(file);
 }
+const container = document.querySelector('.container');
+const btnContainer = document.querySelector('.cadastrarBtnConteiner');
+
+if (container && btnContainer) {
+  container.addEventListener('scroll', function () {
+    const scrollTop = container.scrollTop;
+    const scrollHeight = container.scrollHeight;
+    const clientHeight = container.clientHeight;
+
+    // Chegou ao final do scroll do container (tolerância de 5px)
+    if (scrollTop + clientHeight >= scrollHeight - 5) {
+      btnContainer.style.display = 'none';
+    } else {
+      btnContainer.style.display = 'block';
+    }
+  });
+}
