@@ -545,6 +545,17 @@ select {
     top: 70%;
 }
 
+.cadastrarBtnConteiner {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(180deg, #161616 0%, #1b0d29 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    height: 145px;
+    border-top: 1px solid;
+    padding-top: 2%;
+}
 
 @media (max-width: 999px) {
     .popup-content {
@@ -553,7 +564,7 @@ select {
     }
 
     .container {
-        height: 80vh;
+        height: 100vh;
         padding-top: 3%;
     }
 
@@ -594,10 +605,8 @@ select {
     }
 
     #cadastrarBtn {
-        padding-bottom: 9%;
-        margin-bottom: 15%;
+        padding-bottom: 8%;
         font-size: x-large;
-        padding-top: 5%;
     }
 
     .leftMenu {
