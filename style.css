@@ -651,10 +651,15 @@ select {
     .channel-card:hover {
         transform: none;
         box-shadow: none;
+
     }
 
     .channel-card button {
         background-color: black;
+    }
+
+    .channel-card:hover button {
+        font-size: x-large;
     }
 
     .btnedelete {
@@ -664,6 +669,12 @@ select {
 
     .btnedit {
         background-color: #7f8081;
+    }
+
+    .channel-card h3 {
+        font-size: large;
+        background: #865AFF;
+        box-shadow: 0px 0px 14px 2px #9169ff;
     }
 }
 
@@ -684,5 +695,15 @@ select {
     #categoryContent h2 {
         font-size: 40px;
         margin-top: 15%;
+    }
+
+    .channel-card:hover button {
+        font-size: x-large;
+    }
+
+    .channel-card h3 {
+        font-size: large;
+        background: #865AFF;
+        box-shadow: 0px 0px 14px 2px #9169ff;
     }
 }
