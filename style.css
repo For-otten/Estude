@@ -552,6 +552,10 @@ select {
         height: 900px;
     }
 
+    .container {
+        height: 75vh;
+    }
+
     .popup-content p {
         font-size: x-large;
         margin-bottom: 6%;
