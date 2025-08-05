@@ -210,9 +210,9 @@ li.active {
 }
 
 .inicio {
-    width: 10%;
     display: flex;
     align-items: center;
+    margin-right: 1%;
 }
 
 .inicio img {
@@ -240,6 +240,12 @@ li.active {
     position: relative;
     border-bottom: 1px solid rgba(255, 255, 255, 0.158);
 
+}
+
+.options {
+    display: flex;
+    width: 100%;
+    align-items: center;
 }
 
 .cards-wrapper {

@@ -14,8 +14,10 @@
       <div class="inicio"><img src="design-responsivo.png">
         <h2>Conteúdos</h2>
       </div>
-      <li>Programação</li>
-      <li>Idiomas</li>
+      <div class="options">
+        <li>Programação</li>
+        <li>Idiomas</li>
+      </div>
     </ul>
     <div class="import-export">
       <button onclick="exportarConteudo()" class="exportImportBtn"><img src="import-export.png" class="logoBtn">
@@ -48,10 +50,12 @@
         <input type="text" id="newChannelName" placeholder="Título">
         <input type="text" id="newChannelDescription" placeholder="Descrição">
         <input type="url" id="newChannelLink" placeholder="Link a ser acessado">
-        <input type="url" id="newChannelImage" title="Opcional. Para YouTube, a thumb é carregada automaticamente. Caso queira usar uma imagem própria, insira o link direto da imagem." placeholder="Link da imagem de capa (Opcional)">
+        <input type="url" id="newChannelImage"
+          title="Opcional. Para YouTube, a thumb é carregada automaticamente. Caso queira usar uma imagem própria, insira o link direto da imagem."
+          placeholder="Link da imagem de capa (Opcional)">
         <div class="custom-select-wrapper">
-          <p for="newChannelLanguage">Categoria:</p>  
-          <select id="newChannelLanguage" >
+          <p for="newChannelLanguage">Categoria:</p>
+          <select id="newChannelLanguage">
             <option value="Francês">Francês</option>
             <option value="Japonês">Japonês</option>
           </select>
