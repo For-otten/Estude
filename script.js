@@ -203,20 +203,17 @@ function carregarCategoria(categoria) {
 
     if (cards.length === 0) return;
 
-    // Verifica se os cards estão empilhados verticalmente
     const verticalLayout = cards.length > 1 && cards[0].offsetTop !== cards[1].offsetTop;
 
     let primeiroCard = null;
 
     if (verticalLayout) {
-      // Ordena por posição top (mais acima na tela)
       primeiroCard = Array.from(cards).sort((a, b) => a.offsetTop - b.offsetTop)[0];
     } else {
-      // Layout horizontal: considera o scroll
       primeiroCard = Array.from(cards).find(card => {
         const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
         return Math.abs(relativeLeft) < 6;
-      }) || cards[0]; // fallback
+      }) || cards[0]; 
     }
 
     if (primeiroCard) {
@@ -325,12 +322,9 @@ function carregarCategoria(categoria) {
 
           const larguraCard = cardRect.width;
 
-          // Quanto o canto esquerdo do card está dentro do botão (positivo = entrou)
           const distanciaDoBotao = cardRect.left - btnEsquerdaRect.right;
           const tolerancia = 25;
-          // Profundidade ajustada: negativo = ainda não entrou, mas dentro da tolerância
           const profundidade = tolerancia - distanciaDoBotao;
-          // Remove classe e estilo sempre primeiro
           card.classList.remove('primeiro-na-esquerda-button');
           card.style.removeProperty('--deslocamento-hover');
 
@@ -457,7 +451,6 @@ if (container && btnContainer) {
     const scrollHeight = container.scrollHeight;
     const clientHeight = container.clientHeight;
 
-    // Chegou ao final do scroll do container (tolerância de 5px)
     if (scrollTop + clientHeight >= scrollHeight - 5) {
       btnContainer.style.display = 'none';
     } else {
