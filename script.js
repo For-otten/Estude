@@ -132,7 +132,7 @@ function editarCanal(categoria, index) {
   document.getElementById('newChannelLink').value = canal.link;
 
   const imagem = canal.image || '';
-  const ehImagemAutomatica = 
+  const ehImagemAutomatica =
     imagem.startsWith('https://placehold.co/') ||
     imagem.includes('img.youtube.com/vi/');
 
@@ -197,6 +197,17 @@ function carregarCategoria(categoria) {
       scrollPositions[tagTitulo] = cardsContainer.scrollLeft;
     }
   });
+  function aplicarClassePrimeiroCard(cardsContainer) {
+    const cards = cardsContainer.querySelectorAll('.channel-card');
+    cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
+
+    cards.forEach(card => {
+      const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
+      if (Math.abs(relativeLeft) < 6) {
+        card.id = 'primeiro-na-esquerda';
+      }
+    });
+  }
 
   titulo.innerHTML = `Canais de ${categoria}`;
   const cadastrarbnt = document.getElementById('cadastrarBtn');
@@ -224,7 +235,7 @@ function carregarCategoria(categoria) {
 
       const cardsContainer = document.createElement('div');
       cardsContainer.className = 'cards';
-
+      aplicarClassePrimeiroCard(cardsContainer);
       const btnEsquerda = document.createElement('button');
       btnEsquerda.className = 'tras';
       btnEsquerda.textContent = '<';
@@ -275,17 +286,7 @@ function carregarCategoria(categoria) {
 
       const scrollAmount = 2350;
 
-      function aplicarClassePrimeiroCard(cardsContainer) {
-        const cards = cardsContainer.querySelectorAll('.channel-card');
-        cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
 
-        cards.forEach(card => {
-          const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
-          if (Math.abs(relativeLeft) < 6) {
-            card.id = 'primeiro-na-esquerda';
-          }
-        });
-      }
 
       function atualizarVisibilidadeBotoes() {
         if (cardsContainer.scrollWidth > cardsContainer.clientWidth) {
@@ -303,27 +304,34 @@ function carregarCategoria(categoria) {
         cards.forEach(card => card.classList.remove('primeiro-na-esquerda'));
 
         const btnEsquerdaRect = btnEsquerda.getBoundingClientRect();
-
         cards.forEach(card => {
           const cardRect = card.getBoundingClientRect();
 
-          const relativeLeft = card.offsetLeft - cardsContainer.scrollLeft;
+          const larguraCard = cardRect.width;
 
-          const encostadoEsquerda = Math.abs(relativeLeft) < 6;
+          // Quanto o canto esquerdo do card está dentro do botão (positivo = entrou)
+          const distanciaDoBotao = cardRect.left - btnEsquerdaRect.right;
+          const tolerancia = 25;
+          // Profundidade ajustada: negativo = ainda não entrou, mas dentro da tolerância
+          const profundidade = tolerancia - distanciaDoBotao;
+          // Remove classe e estilo sempre primeiro
+          card.classList.remove('primeiro-na-esquerda-button');
+          card.style.removeProperty('--deslocamento-hover');
 
-          const sobreBotaoEsquerda = (
-            cardRect.right > btnEsquerdaRect.left &&
-            cardRect.left < btnEsquerdaRect.right &&
-            cardRect.bottom > btnEsquerdaRect.top &&
-            cardRect.top < btnEsquerdaRect.bottom
-          );
+          const limite = 0.4; 
+          const deslocamentoMaximo = 40;
 
-          if (encostadoEsquerda || sobreBotaoEsquerda) {
+          if (profundidade > 0 && profundidade < larguraCard * limite) {
+            const percentual = profundidade / (larguraCard * limite);
+            const curva = Math.pow(percentual, 0.9); 
+            const deslocamento = deslocamentoMaximo * curva;
+
             card.classList.add('primeiro-na-esquerda-button');
-          } else {
-            card.classList.remove('primeiro-na-esquerda-button');
+            card.style.setProperty('--deslocamento-hover', `${deslocamento}%`);
           }
+
         });
+
 
         atualizarVisibilidadeBotoes();
       });

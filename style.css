@@ -124,6 +124,7 @@ li {
     border-radius: 9px;
     margin: 0% 1%;
     font-size: 14px;
+    list-style: none;
 }
 
 li:hover {
@@ -155,6 +156,12 @@ li.active {
     border-bottom: 1px solid #865aff8c;
 }
 
+.leftMenu {
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+}
+
 .sidebar h2 {
     margin-right: 3%;
 }
@@ -162,8 +169,10 @@ li.active {
 .import-export {
     display: flex;
     align-items: center;
-    width: 11%;
+    width: 8%;
+    margin-right: 5%;
     padding-top: 0;
+    justify-content: flex-end;
 }
 
 .exportImportBtn {
@@ -221,7 +230,6 @@ li.active {
 }
 
 #categoryContent h2 {
-    position: absolute;
     width: 100%;
     text-align: start;
 
@@ -256,7 +264,7 @@ li.active {
 .channelscroll {
     display: flex;
     width: 96vw;
-    margin-top: 3.1%;
+    margin-top: 0.5%;
     border-radius: 10px;
     height: 375px;
 
@@ -265,7 +273,7 @@ li.active {
 .tras,
 .frente {
     position: absolute;
-    top: 0;
+    top: 14%;
     opacity: 0.9;
     height: 377px;
     border: none;
@@ -276,7 +284,6 @@ li.active {
     z-index: 99;
     cursor: pointer;
     transition: 200ms;
-    margin-top: 3%;
 }
 
 .tras:hover {
@@ -301,7 +308,7 @@ li.active {
     margin-right: 0.5%;
     margin-bottom: 2.5%;
     backdrop-filter: blur(8px);
-    width: 400px;
+    width: 397px;
     height: 328px;
     color: white;
     position: relative;
@@ -425,9 +432,7 @@ li.active {
 }
 
 .channel-card.primeiro-na-esquerda-button:hover {
-
-    transform: scale(1.14) translateY(6px) translateX(65px);
-
+    transform: scale(1.14) translateY(6px) translateX(var(--deslocamento-hover, 35px));
 }
 
 #cadastrarBtn {
