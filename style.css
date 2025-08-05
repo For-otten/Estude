@@ -634,9 +634,11 @@ select {
     }
 
     .cards-wrapper {
-        margin-top: 8%;
+        margin-top: 27%;
         overflow-y: auto;
         height: 800px;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
     }
 
     #categoryContent h2 {
