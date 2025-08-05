@@ -635,6 +635,8 @@ select {
 
     .cards-wrapper {
         margin-top: 8%;
+        overflow-y: auto;
+        height: 800px;
     }
 
     #categoryContent h2 {
